@@ -6,9 +6,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=sukhjinder_psql
+      - POSTGRES_USER=root
       - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=twitterdb
+      - POSTGRES_DB=apesso_club_dev
       - PGDATA=/var/lib/postgresql/data/
     volumes:
       - pgdata:/var/lib/postgresql/data
