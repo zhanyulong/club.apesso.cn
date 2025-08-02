@@ -20,6 +20,7 @@ const { NODE_ENV, COOKIE_SECRET } = require('./utils/config');
 const app = express();
 
 const isDev = NODE_ENV === 'development';
+const isProd = NODE_ENV === 'production';
 
 app.use(morgan('dev'));
 app.use(
@@ -42,15 +43,13 @@ app.use(
   })
 );
 
-if (isDev) {
-  app.use(
-    cors({
-      origin: 'http://localhost:3000',
-      optionsSuccessStatus: 200,
-      credentials: true,
-    })
-  );
-}
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
 
 app.use(express.json({ type: 'application/json' }));
 app.use(cookieParser(COOKIE_SECRET));
