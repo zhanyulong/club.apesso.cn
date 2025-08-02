@@ -12,6 +12,8 @@ COPY --chown=node:node package.json .
 
 RUN npm set-script prepare ""
 
+RUN npm config set registry https://registry.npmmirror.com
+
 RUN npm install
 
 COPY --chown=node:node . .
